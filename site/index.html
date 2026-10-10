@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Illini Mealtimes</title>
+    <script type="module" crossorigin src="./assets/index-BJRSF80H.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D7guuNMt.css">
+  </head>
+  <body>
+    <header>
+      <h1>Illini <span>Mealtimes</span></h1>
+      <p>
+        Three meals dropped into the real gaps in your day, at whichever dining hall costs you the least walking
+        between the class you just left and the one you're heading to.
+      </p>
+    </header>
+
+    <main>
+      <div class="bar">
+        <div class="tabs" id="dayTabs" role="tablist" aria-label="Day"></div>
+        <div class="grow"></div>
+        <button class="icon" id="setupButton">Setup</button>
+      </div>
+
+      <div class="cols">
+        <section class="card" aria-label="Day plan">
+          <div class="plan" id="plan"></div>
+          <div class="cardfoot" id="planFooter">
+            <span id="walkTotal"></span>
+            <a class="link" id="dayRoute" href="#" target="_blank" rel="noopener">Whole day in Google Maps ↗</a>
+          </div>
+        </section>
+
+        <section class="card" aria-label="Map">
+          <div id="map"></div>
+        </section>
+      </div>
+    </main>
+
+    <details class="about">
+      <summary>How the times are worked out, and what to double-check</summary>
+      <p>
+        <strong>Walk times.</strong> Straight-line distance between buildings × 1.3 for sidewalk detours, at about
+        3 mph. Good enough to rank options against each other; use the Google Maps links for a real routed path.
+      </p>
+      <p>
+        <strong>Hours and menus.</strong> Weekday serving hours come from University Housing's menu page and the
+        Illini Union's site (fall 2026). Menus are University Housing's own daily menus.
+      </p>
+      <p>Your schedule is saved only in this browser. Nothing is sent anywhere.</p>
+    </details>
+
+    <dialog id="setupDialog" aria-label="Setup">
+      <div class="dhead">
+        <div class="tabs">
+          <button class="tab on" data-pane="schedule">Schedule</button>
+          <button class="tab" data-pane="preferences">Preferences</button>
+          <button class="tab" data-pane="dining">Dining</button>
+        </div>
+        <button class="x" data-close aria-label="Close">&times;</button>
+      </div>
+      <div class="dbody">
+        <div id="pane-schedule">
+          <div id="scheduleWeek">
+            <div class="cal-toolbar">
+              <p class="hint">Tap a class to edit it, or tap an empty time to add one.</p>
+              <button class="add" id="addCommitment">+ Add</button>
+            </div>
+            <div class="cal" id="calendar"></div>
+          </div>
+
+          <form id="scheduleEditor" class="editor" novalidate hidden>
+            <button type="button" class="back" data-editor-cancel>← Week</button>
+            <h3 id="editorTitle">Edit class</h3>
+            <label>Name <input name="name" placeholder="e.g. CS 124 Lecture" autocomplete="off" /></label>
+            <label>Building <select name="building"></select></label>
+            <div class="two">
+              <label>Starts <input type="time" name="start" step="300" /></label>
+              <label>Ends <input type="time" name="end" step="300" /></label>
+            </div>
+            <fieldset>
+              <legend>Meets on</legend>
+              <div class="chips" id="dayChips"></div>
+            </fieldset>
+            <p class="form-error" role="alert" hidden></p>
+            <div class="editor-actions">
+              <button type="button" class="danger" id="deleteSeries">Delete</button>
+              <span class="grow"></span>
+              <button type="button" class="ghost" data-editor-cancel>Cancel</button>
+              <button type="submit" class="primary">Save</button>
+            </div>
+          </form>
+        </div>
+        <div id="pane-preferences" class="prefs" hidden></div>
+        <div id="pane-dining" hidden>
+          <p class="hint">
+            Weekday hours from University Housing and the Illini Union. Uncheck a spot and it won't be suggested.
+          </p>
+          <div id="diningRows"></div>
+          <details class="advanced">
+            <summary>Advanced: building locations</summary>
+            <p class="hint">
+              Approximate building locations. Open one in Google Maps to check it; type a correction and every walk
+              estimate updates.
+            </p>
+            <div class="r3 lbl"><span>Building</span><span>Latitude</span><span>Longitude</span><span></span></div>
+            <div id="buildingRows"></div>
+          </details>
+        </div>
+      </div>
+      <div class="dfoot"><button class="primary" data-close>Done</button></div>
+    </dialog>
+
+  </body>
+</html>

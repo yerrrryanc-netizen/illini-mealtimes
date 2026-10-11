@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Illini Mealtimes</title>
-    <script type="module" crossorigin src="./assets/index-BQyHEpvy.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B9fY0knj.css">
+    <script type="module" crossorigin src="./assets/index-DMD-KYtz.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CreALq6x.css">
   </head>
   <body>
     <header>
@@ -21,6 +21,10 @@
         <div class="tabs" id="dayTabs" role="tablist" aria-label="Day"></div>
         <div class="grow"></div>
         <span class="version" id="versionStamp"></span>
+        <div class="account" id="account" hidden>
+          <span class="sync" id="syncStatus" role="status" aria-live="polite"></span>
+          <button class="icon" id="accountButton">Sign in with Google</button>
+        </div>
         <button class="icon" id="setupButton">Setup</button>
       </div>
 
@@ -49,8 +53,23 @@
         <strong>Hours and menus.</strong> Weekday serving hours come from University Housing's menu page and the
         Illini Union's site (fall 2026). Menus are University Housing's own daily menus.
       </p>
-      <p>Your schedule is saved only in this browser. Nothing is sent anywhere.</p>
+      <p>
+        Your schedule is saved in this browser. If you sign in with Google, it's also saved to your account
+        so it follows you to other devices; only you can read it.
+      </p>
     </details>
+
+    <dialog id="syncChoice" class="choice" aria-labelledby="syncChoiceTitle">
+      <form method="dialog">
+        <h3 id="syncChoiceTitle">Which setup should we use?</h3>
+        <p>This device has classes or settings that are different from what's saved in your Google account.</p>
+        <div class="choice-actions">
+          <button class="primary" value="account">Use my account's setup</button>
+          <button class="ghost" value="device">Keep this device's setup</button>
+        </div>
+        <p class="hint">Keeping this device's setup replaces what's saved in your account.</p>
+      </form>
+    </dialog>
 
     <dialog id="setupDialog" aria-label="Setup">
       <div class="dhead">

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Illini Mealtimes</title>
-    <script type="module" crossorigin src="./assets/index-DMD-KYtz.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CreALq6x.css">
+    <script type="module" crossorigin src="./assets/index-BUmy3mTS.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B6ogVtLF.css">
   </head>
   <body>
     <header>
@@ -84,11 +84,14 @@
         <div id="pane-schedule">
           <div id="scheduleWeek">
             <div class="cal-toolbar">
-              <p class="hint">Drag over empty time to add a class (on a phone, press and hold first). Tap a class to edit it.</p>
+              <p class="hint">Drag over empty time to add a class. Drag a class to move it, or its bottom edge to change when it ends (on a phone, press and hold first). Tap a class to edit it.</p>
               <button class="add" id="addCommitment">+ Add</button>
             </div>
+            <button type="button" class="ghost import-button" id="importCalendar" hidden>Import from Google Calendar</button>
+            <p class="saved" id="scheduleStatus" role="status" aria-live="polite"></p>
             <div class="cal" id="calendar"></div>
           </div>
+          <section id="calendarImport" class="import" hidden></section>
 
           <form id="scheduleEditor" class="editor" novalidate hidden>
             <button type="button" class="back" data-editor-cancel>← Week</button>
@@ -118,6 +121,16 @@
             Weekday hours from University Housing and the Illini Union. Uncheck a spot and it won't be suggested.
           </p>
           <div id="diningRows"></div>
+          <details class="advanced" id="restaurantSection">
+            <summary>Campustown restaurants (<span id="restaurantCount"></span>)</summary>
+            <p class="hint">
+              Restaurants around Green Street show up under <strong>Other options</strong> on a meal; star the ones you
+              like to list them first. They're never the main suggestion, and none take swipes or Dining Dollars.
+            </p>
+            <input type="search" id="restaurantSearch" placeholder="Search by name or food, e.g. ramen" aria-label="Search restaurants" />
+            <ul class="restaurant-list" id="restaurantRows"></ul>
+            <p class="hint">Locations from OpenStreetMap. Hours marked ✓ were checked with the restaurant's own website; the rest are OpenStreetMap's. Prices (≈) are estimates.</p>
+          </details>
           <details class="advanced">
             <summary>Advanced: building locations</summary>
             <p class="hint">

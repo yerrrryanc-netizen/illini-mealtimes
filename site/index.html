@@ -4,8 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Illini Mealtimes</title>
-    <script type="module" crossorigin src="./assets/index-Dpvug_AR.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-C6tQRkbp.css">
+    <script>
+      // Light or dark as chosen in Setup → Preferences, applied before the page is first drawn so it doesn't
+      // flash in the device's mode first. theme.ts does the rest; the key is its THEME_KEY.
+      try {
+        const theme = localStorage.getItem("illini-mealtimes/theme");
+        if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+      } catch {
+        // storage blocked: follow the device
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/index-b5EEnNiT.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BOYIDpo6.css">
   </head>
   <body>
     <header>

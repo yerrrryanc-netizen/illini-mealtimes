@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Illini Mealtimes</title>
-    <script type="module" crossorigin src="./assets/index-C11-mJHS.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B1sj20gs.css">
+    <script type="module" crossorigin src="./assets/index-BSoGflYD.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dz8zj0zG.css">
   </head>
   <body>
     <header>
@@ -88,6 +88,11 @@
               <button class="add" id="addCommitment">+ Add</button>
             </div>
             <button type="button" class="ghost import-button" id="importCalendar" hidden>Import from Google Calendar</button>
+            <label class="ics-drop" id="icsDrop">
+              <input type="file" id="icsFile" class="visually-hidden" accept=".ics,text/calendar" />
+              <strong>Import a calendar file (.ics)</strong>
+              <span>Drop it here, or click to choose one. Works with Apple Calendar, Outlook, Google Calendar and your UIUC class schedule.</span>
+            </label>
             <p class="saved" id="scheduleStatus" role="status" aria-live="polite"></p>
             <div class="cal" id="calendar"></div>
           </div>

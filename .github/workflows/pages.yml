@@ -1,5 +1,5 @@
 # Copied into the public illini-mealtimes repo by scripts/deploy.sh.
-# Publishes the site with a fresh week of dining menus on every publish and every morning.
+# Publishes the site with a fresh week of dining menus and bus times on every publish and every morning.
 name: Publish site with fresh menus
 
 on:
@@ -31,6 +31,9 @@ jobs:
           node-version: 24
       # If the menu feed is down, this fails and the previous day's site stays up.
       - run: node scripts/fetch-menus.mjs site/menus
+      # CUMTD's bus schedule for the coming week. If it's down, the site still publishes and plans on foot.
+      - run: node scripts/fetch-buses.mjs site
+        continue-on-error: true
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
